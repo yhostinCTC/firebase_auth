@@ -9,14 +9,21 @@ formRegistro.addEventListener("submit", async (evento) =>{
     const password = formRegistro['password_registro'].value;
     console.log(email, password)
 
+    let status_code = ''
+
     try {
         const userCredential = await createUserWithEmailAndPassword(auth, email, password)
-        console.log(userCredential)
+        status_code = 'El usuario se creo correctamente'
         
     } catch (error) {
         console.log("Ha habido un error revisalo")
+        status_code = 'No se logro crear el usuario satisfactoriamente. Revise si su correo ya esta en uso e intente de nuevo'
     }
-    console.log(1+1)
+    
+    document.getElementById("registro-message").innerHTML = status_code
+    const toast = new bootstrap.Toast(document.getElementById("registroToast"))
+    toast.show()
+    //alert(status_code) Esto es solo para valeria
 
 })
 
