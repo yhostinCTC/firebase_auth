@@ -4,6 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebas
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js" 
 
+import {getFirestore, collection, addDoc, getDocs, onSnapshot} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js" //para CRUD
 
 
 // Your web app's Firebase configuration
@@ -26,3 +27,13 @@ const firebaseConfig = {
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
 export const auth = getAuth(app);
+export const db = getFirestore();
+
+// Referencia hacia nuestra coleccion
+// Servicio que trae todas las peliculas
+export const getPeliculas = () =>  getDocs(collection(db, 'peliculas'))
+
+// Servicio para guardar peliculas
+export const savePeliculas = async (director, titulo, genero) =>{
+  return await addDoc(collection(db,"peliculas"), {director, titulo, genero})
+}
