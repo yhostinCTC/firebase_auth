@@ -8,6 +8,9 @@ import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.j
 
 // Your web app's Firebase configuration
 // For Firebase JS SDK v7.20.0 and later, measurementId is optional
+
+
+// Cambiar por su propia configuracion 
 const firebaseConfig = {
   apiKey: "AIzaSyD-TlT0i5nHYvBdEiFuQC9bpyPmgY3kq5g",
   authDomain: "testunicef-19974.firebaseapp.com",
@@ -17,6 +20,8 @@ const firebaseConfig = {
   appId: "1:639517203686:web:efed7c06981cf28c6e6f27",
   measurementId: "G-8Y78ZGWZ4J"
 };
+
+// Cambiar hasta aqui
 
 // Initialize Firebase
 export const app = initializeApp(firebaseConfig);
