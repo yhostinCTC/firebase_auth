@@ -33,7 +33,12 @@ export const db = getFirestore();
 // Servicio que trae todas las peliculas
 export const getPeliculas = () =>  getDocs(collection(db, 'peliculas'))
 
+// Servicio que trae todas las peliculas y se actualiza en tiempo real
+export const onGetPeliculas = (callback) => onSnapshot(collection(db, "peliculas"), callback)
+
 // Servicio para guardar peliculas
-export const savePeliculas = async (director, titulo, genero) =>{
-  return await addDoc(collection(db,"peliculas"), {director, titulo, genero})
+export const savePeliculas = async (director, titulo, genero, userEmail) =>{
+  return await addDoc(collection(db,"peliculas"), {director, titulo, genero, userEmail})
 }
+
+

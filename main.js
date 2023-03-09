@@ -1,5 +1,5 @@
 import { onAuthStateChanged } from "https://www.gstatic.com/firebasejs/9.10.0/firebase-auth.js"
-import { auth, getPeliculas } from "./app/config.js"
+import { auth, getPeliculas, onGetPeliculas } from "./app/config.js"
 import { setupPosts } from "./utils/data.js"
 
 
@@ -12,20 +12,24 @@ import { card } from "./utils/card.js"
 
 onAuthStateChanged(auth, async (user) => {
     if (user) {
-      //loginCheck(user);
+      document.getElementById('button_logout').className = "btn btn-danger";
       let mensaje = "";
       try {
-        let peliculas = await getPeliculas()
-        peliculas.forEach(pelicula => {
-          mensaje+= card(pelicula.data());
-        });
-        // 
-        setupPosts(mensaje);
-        formCardListener();
+        //let peliculas = await getPeliculas()
+        
+        onGetPeliculas((peliculas)=>{
+          peliculas.forEach(pelicula => {
+            console.log(pelicula.data())
+            mensaje+= card(pelicula.data());
+          });
+          setupPosts(mensaje);
+          formCardListener(user.email); 
+        })
       } catch (error) {
         console.log(error)
       }
     } else {
+      document.getElementById('button_logout').className = "btn btn-danger d-none";
       const vacio = "";
       setupPosts(vacio);
       //loginCheck(user);

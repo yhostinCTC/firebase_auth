@@ -8,6 +8,7 @@ postList = postList.firstChild;
 console.log(postList)
 
 export const setupPosts = (data) => {
+    console.log("Si se esta ejecutando");
     if (data.length){
         postList.innerHTML = `
             <div class='col-7 container'>
