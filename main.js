@@ -13,16 +13,20 @@ import { card } from "./utils/card.js"
 onAuthStateChanged(auth, async (user) => {
     if (user) {
       document.getElementById('button_logout').className = "btn btn-danger";
-      let mensaje = "";
+
       try {
         //let peliculas = await getPeliculas()
         
         onGetPeliculas((peliculas)=>{
+          let mensaje = "";
           peliculas.forEach(pelicula => {
-            console.log(pelicula.data())
-            mensaje+= card(pelicula.data());
+            if(pelicula.data().userEmail == user.email){
+              console.log(pelicula.data())
+              mensaje+= card(pelicula.data(), pelicula.id);
+            }
+
           });
-          setupPosts(mensaje);
+          setupPosts(mensaje, user);
           formCardListener(user.email); 
         })
       } catch (error) {

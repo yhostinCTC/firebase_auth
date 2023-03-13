@@ -7,9 +7,9 @@ postList = postList.firstChild;
 
 console.log(postList)
 
-export const setupPosts = (data) => {
+export const setupPosts = (data, user) => {
     console.log("Si se esta ejecutando");
-    if (data.length){
+    if (data.length || user){
         postList.innerHTML = `
             <div class='col-7 container'>
              ${data}
