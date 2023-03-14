@@ -4,7 +4,7 @@ import { initializeApp } from "https://www.gstatic.com/firebasejs/9.17.1/firebas
 // https://firebase.google.com/docs/web/setup#available-libraries
 import {getAuth} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-auth.js" 
 
-import {getFirestore, collection, addDoc, getDocs, onSnapshot} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js" //para CRUD
+import {getFirestore, collection, addDoc, getDocs, onSnapshot, deleteDoc, doc, updateDoc} from "https://www.gstatic.com/firebasejs/9.17.1/firebase-firestore.js" //para CRUD
 
 
 // Your web app's Firebase configuration
@@ -41,4 +41,6 @@ export const savePeliculas = async (director, titulo, genero, userEmail) =>{
   return await addDoc(collection(db,"peliculas"), {director, titulo, genero, userEmail})
 }
 
+export const deletePelicula = (id) => deleteDoc(doc(db, "peliculas", id));
 
+export const updatePelicula = (id, newFields) => updateDoc(doc(db,"peliculas", id), newFields)

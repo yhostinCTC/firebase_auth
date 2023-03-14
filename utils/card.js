@@ -34,7 +34,7 @@ export const card = (pelicula, id) => {
             </div>
             <div class="modal-footer">
                 <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                <button type="button" class="btn btn-danger" data-id=${id}>Eliminar</button>
+                <button type="button" class="btn btn-danger btn-delete" data-id=${id}>Eliminar</button>
             </div>
             </div>
         </div>
@@ -46,17 +46,32 @@ export const card = (pelicula, id) => {
     <div class="modal fade" id="editModal${id}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog">
         <div class="modal-content">
+        <form id="form_card_update${id}">
         <div class="modal-header">
             <h1 class="modal-title fs-5" id="exampleModalLabel">Editar Pelicula</h1>
             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body">
-            ...
+        
+            <div class="mb-3">
+                <label for="inputDirector" class="form-label">Director</label>
+                <input type="text" class="form-control" id="inputDirector" value=${pelicula.director}>
+            </div>
+            <div class="mb-3">
+                <label for="inputTitulo" class="form-label">Titulo</label>
+                <input type="text" class="form-control" id="inputTitulo" value=${pelicula.titulo}>
+            </div>
+            <div class="mb-3">
+                <label for="inputGenero" class="form-label">Genero</label>
+                <input type="number" class="form-control" id="inputGenero" value=${pelicula.genero}>
+            </div>
+            
         </div>
         <div class="modal-footer">
             <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-            <button type="button" class="btn btn-danger" data-id=${id}>Editar</button>
+            <button type="submit" class="btn btn-danger" data-id=${id}>Editar</button>
         </div>
+        </form>
         </div>
     </div>
     </div>
